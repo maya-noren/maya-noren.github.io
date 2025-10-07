@@ -77,7 +77,6 @@ a.button:hover {
 
 
 /* Footer Styling */
-/* Footer container */
 #footer {
   width: 100%;
   display: flex;
@@ -87,22 +86,15 @@ a.button:hover {
   padding: 40px 0;
 }
 
-/* Footer icons */
 #footer .footer-icon {
-  width: 100px !important;   /* Set your desired size */
-  height: 100px !important;
-  max-width: none !important;
-  max-height: none !important;
-  display: block !important;
-  object-fit: contain;
+  width: 100px;
+  height: 100px;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #footer .icon-link:hover .footer-icon {
   transform: rotate(15deg);
-  cursor: pointer;
 }
-
 
 /* Link Styling */
 a.no-underline {
