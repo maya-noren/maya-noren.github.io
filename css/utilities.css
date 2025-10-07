@@ -79,31 +79,21 @@ a.button:hover {
 /* Footer Styling */
 
 #footer {
-  width: 100%;
   display: flex;
-  padding: 30px 50px;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-}
-
-/* Footer Animations */
-
-#footer .icon-link {
-  width: 100px;   /* size of clickable area */
-  height: 100px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
 }
 
 #footer .footer-icon {
-  width: 100%;
-  height: 100%;
+  width: 80px !important;
+  height: 80px !important;
+  max-width: none !important;
+  max-height: none !important;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-icon:hover {
+#footer .icon-link:hover .footer-icon {
   transform: rotate(15deg);
 }
 
