@@ -90,8 +90,8 @@ a.button:hover {
 /* Footer Animations */
 
 #footer .icon-link {
-  width: 60px;   /* size of clickable area */
-  height: 60px;
+  width: 100px;   /* size of clickable area */
+  height: 100px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
