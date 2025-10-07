@@ -89,9 +89,17 @@ a.button:hover {
 
 /* Footer Animations */
 
-.footer-icon {
-  width: 80px;
-  height: 80px;
+#footer .icon-link {
+  width: 60px;   /* size of clickable area */
+  height: 60px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .footer-icon {
+  width: 100%;
+  height: 100%;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
