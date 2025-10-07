@@ -88,8 +88,8 @@ a.button:hover {
 
 /* Wrapper for each icon */
 #footer .footer-icon-wrapper {
-  width: 80px;   /* Icon size */
-  height: 80px;
+  width: 200px;   /* Icon size */
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
