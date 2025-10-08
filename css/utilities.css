@@ -87,8 +87,8 @@ a.button:hover {
 }
 
 #footer .footer-icon {
-  width: 50;
-  height: 50;
+  width: 50px;
+  height: 50px;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
