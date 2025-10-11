@@ -35,13 +35,10 @@
       <!-- PORTFOLIO HEADER -->
       <div id="portfolio-header">
         <div id="portfolio-header-image-container">
-          <!-- 
-            main pic + label (cat)
-          -->
-          <img src="./assets/images/me_pix.png" class="portfolio-header-image">
-          <a class="no-underline" target="_blank" href="https://opensea.io/assets/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/me_pix">
-          </a>
-        </div>
+        <img src="./assets/images/me_pix.png" id="main-pix" class="portfolio-header-image" alt="Main pixel art">
+        <img src="./assets/images/blinking.png" id="blink-pix" class="portfolio-header-image" alt="Blink" />
+        <img src="./assets/images/cat_blinking.png" id="cat-blink" class="portfolio-header-image" alt="Cat blink" />
+      </div>
 
           <!-- 
             - main-title 
@@ -66,11 +63,11 @@
         - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
       -->
       <div id="about-section">
-        <span class="subheader-text">My Background / About Me</span>
+        <span class="subheader-text">About Me</span>
         <div class="about-section-content">
           <div class="body-text">I’m a computer science student at the University of Michigan with a strong foundation in software development, algorithms, and electronics. I enjoy tackling complex problems and creating practical solutions, whether through coding projects, hackathons, or collaborative class work.</div>
           <div class="body-text">Beyond the screen, I love working with my hands (I'm also pursing a minor in electrical engineering). In my free time, I love experimenting with small personal projects, learning new technologies, and designing a melange of art creations.</div>
-          <div class="body-test">I'm open to opportunities where I can learn, contribute, and create impact!</div>
+          <div class="body-test">Open to opportunities where I can learn, contribute, and create impact!</div>
         </div>
       </div>
 
@@ -85,7 +82,7 @@
         - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
       -->
       <div id="about-section">
-        <span class="subheader-text">My Background / About Me</span>
+        <span class="subheader-text">Experience</span>
         <div class="about-section-content">
           <div class="body-text">I’m a computer science student at the University of Michigan with a strong foundation in software development, algorithms, and electronics. I enjoy tackling complex problems and creating practical solutions, whether through coding projects, hackathons, or collaborative class work.</div>
           <div class="body-text">Beyond the screen, I love working with my hands (I'm also pursing a minor in electrical engineering). In my free time, I love experimenting with small personal projects, learning new technologies, and designing a melange of art creations.</div>
@@ -173,6 +170,30 @@
         <img src="./assets/icons/linkedin.png" class="footer-icon"/>
       </a>
     </div>
+
+    <script>
+      // Randomized blinking intervals
+      const blinkPix = document.getElementById('blink-pix');
+      const catBlink = document.getElementById('cat-blink');
+
+      function triggerBlink(element, duration) {
+        element.style.opacity = '1';
+        setTimeout(() => element.style.opacity = '0', duration);
+      }
+
+      // Random intervals so they don't sync up
+      function randomBlinkLoop(element, baseDelay, duration) {
+        setTimeout(() => {
+          triggerBlink(element, duration);
+          randomBlinkLoop(element, baseDelay, duration);
+        }, baseDelay + Math.random() * baseDelay);
+      }
+
+      // Person blinks roughly every 4–6 seconds
+      randomBlinkLoop(blinkPix, 4000, 150);
+      // Cat blinks every 6–8 seconds
+      randomBlinkLoop(catBlink, 6000, 200);
+    </script>
 
 	</body>
 </html>
