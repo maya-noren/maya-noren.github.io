@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
 
-        <link rel="icon" href="../assets/images/star.png" />
-        <title>Portfolio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../assets/images/star.png" />
+  <title>Contact | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="stylesheet" href="../css/layout.css">
-        <link rel="stylesheet" href="../css/typography.css">
-        <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/utilities.css">
 
-        <style>
-        #main-content {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        }
+  <style>
+    /* Match top spacing from main page */
+    #main-content {
+      margin-top: 120px; /* adjust until it visually matches your homepage */
+      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        #contact-header {
-        margin-bottom: 10px;
-        }
+    #contact-header {
+      margin-bottom: 24px;
+    }
 
-        #contact-details {
-        margin-bottom: 8px;
-        }
+    #contact-details {
+      margin-bottom: 16px;
+    }
 
-        .body-text {
-        margin: 4px 0;
-        }
+    .body-text {
+      margin: 8px 0;
+    }
 
-        .button {
-        margin-top: 6px;
-        }
+    .button {
+      margin-top: 12px;
+    }
 
-        #footer {
-        margin-top: 16px;
-        }
-    </style>
+    #footer {
+      margin-top: 40px;
+    }
+  </style>
 
-		<script defer src="../js/script.js"></script>
-	</head>
-	<body>
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <a class="nav-title-link" href="../index.html">
-        <span class="nav-title">Portfolio</span>
-      </a>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a class="nav-title-link" href="../index.html">
+      <span class="nav-title">Portfolio</span>
+    </a>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div id="main-content">
+
+    <div id="contact-header">
+      <div class="main-title">Feel free to reach out.</div>
     </div>
-
-    <!-- PAGE CONTENT -->
-    <div id="main-content">
-
-      <div id="contact-header">
-        <div class="main-title">Feel free to reach out.</div>
-      </div>
-    
+  
     <div id="contact-details">
-        <div class="contact-details-content">
-            <div class="body-text">
-            <span class="subheader-text" style="display:inline; font-size:inherit; font-weight:700;">Email:</span>
-            mnoren@umich.edu
-            </div>
+      <div class="contact-details-content">
+        <div class="body-text">
+          <span class="subheader-text" style="display:inline; font-size:inherit; font-weight:700;">Email:</span>
+          mnoren@umich.edu
         </div>
+      </div>
     </div>
-
 
     <!-- RESUME LINK -->
-     <div class="body-text" style="margin-top: 4px;"></div>
-        <a href="./assets/resume.pdf" target="_blank" class="button">
-        <span class="button-text">View Resume</span>
-        </a>
-    </div>
+    <a href="../assets/resume.pdf" target="_blank" class="button">
+      <span class="button-text">View Resume</span>
+    </a>
+  </div>
 
-    <!-- FOOTER -->
-    <div id="footer">
-      
-      <a class="icon-link" href="mailto:mnoren@umich.edu">
-        <img src="./assets/icons/mail.png" class="footer-icon"/>
-      </a>
+  <!-- FOOTER -->
+  <div id="footer">
+    <a class="icon-link" href="mailto:mnoren@umich.edu">
+      <img src="../assets/icons/mail.png" class="footer-icon"/>
+    </a>
 
-      <a class="icon-link" target="_blank" href="https://github.com/maya-noren">
-        <img src="./assets/icons/github.png" class="footer-icon"/>
-      </a>
+    <a class="icon-link" target="_blank" href="https://github.com/maya-noren">
+      <img src="../assets/icons/github.png" class="footer-icon"/>
+    </a>
 
-      <a class="icon-link" target="_blank" href=https://www.linkedin.com/in/mayanoren/">
-        <img src="./assets/icons/linkedin.png" class="footer-icon"/>
-      </a>
-    </div>
+    <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/mayanoren/">
+      <img src="../assets/icons/linkedin.png" class="footer-icon"/>
+    </a>
+  </div>
 
-	</body>
+</body>
 </html>
