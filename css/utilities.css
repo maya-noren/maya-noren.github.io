@@ -18,10 +18,10 @@ html, body {
   margin-top: 1px;
 }
 
-.footer-icon {
+/* .footer-icon {
   width: 20px;
   height: 20px;
-}
+} */
 
 a.icon-link {
   transition: transform 200ms ease-in-out;
@@ -88,19 +88,19 @@ a.button:hover {
 
 
 /* Footer Styling */
-  #footer {
-    margin-top: auto;
-    padding: 40px 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-  }
+#footer {
+  margin-top: auto;
+  padding: 40px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
 
-  #footer .footer-icon {
-    width: 40px;
-    height: 40px;
+#footer .footer-icon {
+  width: 36px;
+  height: 36px;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
