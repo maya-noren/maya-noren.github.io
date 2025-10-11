@@ -171,6 +171,36 @@ body {
       height: auto;
     }
 
+/* Image container */
+#portfolio-header-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* All images stacked */
+#portfolio-header-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* Main image always visible */
+#main-pix {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Blink layers overlay */
+#blink-pix, #cat-blink {
+  z-index: 2;
+  pointer-events: none;
+}
+
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {

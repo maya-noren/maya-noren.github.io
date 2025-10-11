@@ -124,26 +124,6 @@ a.no-underline:hover {
   cursor: pointer;
 }
 
-#portfolio-header-image-container {
-  position: relative;
-  display: inline-block;
-}
-
-#portfolio-header-image-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out;
-}
-
-/* base image always visible */
-#main-pix {
-  opacity: 1;
-}
-
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   #footer {

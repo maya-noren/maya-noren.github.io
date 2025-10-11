@@ -172,27 +172,21 @@
     </div>
 
     <script>
-      // Randomized blinking intervals
-      const blinkPix = document.getElementById('blink-pix');
-      const catBlink = document.getElementById('cat-blink');
-
-      function triggerBlink(element, duration) {
-        element.style.opacity = '1';
-        setTimeout(() => element.style.opacity = '0', duration);
+      function blinkImage(imageId, interval, duration) {
+        const img = document.getElementById(imageId);
+        setInterval(() => {
+          img.style.opacity = 1;
+          setTimeout(() => {
+            img.style.opacity = 0;
+          }, duration);
+        }, interval);
       }
 
-      // Random intervals so they don't sync up
-      function randomBlinkLoop(element, baseDelay, duration) {
-        setTimeout(() => {
-          triggerBlink(element, duration);
-          randomBlinkLoop(element, baseDelay, duration);
-        }, baseDelay + Math.random() * baseDelay);
-      }
+      // Make "blinking" appear every 4 seconds for 150ms
+      blinkImage('blink-pix', 4000, 150);
 
-      // Person blinks roughly every 4–6 seconds
-      randomBlinkLoop(blinkPix, 4000, 150);
-      // Cat blinks every 6–8 seconds
-      randomBlinkLoop(catBlink, 6000, 200);
+      // Make "cat_blinking" appear every 7 seconds for 200ms
+      blinkImage('cat-blink', 7000, 200);
     </script>
 
 	</body>
