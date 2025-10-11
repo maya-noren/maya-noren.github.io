@@ -173,7 +173,7 @@ body {
 
 #pixel-images {
   position: relative;
-  width: 445px; /* ← change this to match your original image’s display width */
+  width: 430px; /* ← change this to match your original image’s display width */
   height: auto;
   aspect-ratio: 1 / 1; /* keeps square shape if it was square */
   display: flex;
