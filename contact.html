@@ -51,6 +51,28 @@
       margin-top: 10px;
     }
 
+    /* keep footer pinned visually near the bottom */
+    #footer {
+      margin-top: auto;
+      padding: 40px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    /* make sure footer icons behave same as main page */
+    #footer .footer-icon {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    #footer .icon-link:hover .footer-icon {
+      transform: rotate(15deg);
+    }
+
     /* Responsive adjustment for mobile */
     @media only screen and (max-width: 800px) {
       #main-content {
