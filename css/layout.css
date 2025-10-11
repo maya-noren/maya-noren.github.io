@@ -171,6 +171,7 @@ body {
       height: auto;
     }
 
+
     
 #pixel-images {
   position: relative;
@@ -181,23 +182,28 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 180px; /* adjust to your desired size */
+  width: 180px; /* adjust to your pixel character size */
   height: auto;
   image-rendering: pixelated;
+  transition: opacity 0.15s ease-in-out;
 }
 
 #me-pix {
-  position: relative; /* base image is static */
+  position: relative; /* base stays visible */
+  opacity: 1;
+  z-index: 1;
 }
 
 .hidden {
   opacity: 0;
+  z-index: 0;
 }
 
 .visible {
   opacity: 1;
-  transition: opacity 0.2s ease-in-out;
+  z-index: 2;
 }
+
 
 
 
