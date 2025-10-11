@@ -78,12 +78,14 @@ a.button:hover {
 
 /* Footer Styling */
 #footer {
+  margin-top: auto;                /* keeps it near bottom */
+  padding: 40px 0;                 /* consistent vertical spacing */
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding: 40px 0;
+  flex-wrap: wrap;                 /* responsive for small screens */
 }
 
 #footer .footer-icon {
