@@ -35,10 +35,13 @@
       <!-- PORTFOLIO HEADER -->
       <div id="portfolio-header">
         <div id="portfolio-header-image-container">
-        <img src="./assets/images/me_pix.png" id="main-pix" class="portfolio-header-image" alt="Main pixel art">
-        <img src="./assets/images/blinking.png" id="blink-pix" class="portfolio-header-image" alt="Blink" />
-        <img src="./assets/images/cat_blinking.png" id="cat-blink" class="portfolio-header-image" alt="Cat blink" />
-      </div>
+          <div id="pixel-images">
+            <img src="./assets/images/me_pix.png" id="me-pix" class="pixel-img" alt="Main pixel art">
+            <img src="./assets/images/blinking.png" id="blink-img" class="pixel-img hidden" alt="Blink">
+            <img src="./assets/images/cat_blinking.png" id="cat-blink-img" class="pixel-img hidden" alt="Cat blink">
+          </div>
+        </div>
+
 
           <!-- 
             - main-title 
@@ -174,6 +177,7 @@
 <script>
   const blinkImg = document.getElementById('blink-img');
   const catBlinkImg = document.getElementById('cat-blink-img');
+
 
   function blink(image, duration = 150, interval = 5000) {
     setInterval(() => {
