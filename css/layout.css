@@ -171,35 +171,34 @@ body {
       height: auto;
     }
 
-/* Image container */
-#portfolio-header-image-container {
+    
+#pixel-images {
   position: relative;
   display: inline-block;
 }
 
-/* All images stacked */
-#portfolio-header-image-container img {
+.pixel-img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 180px; /* adjust to your desired size */
   height: auto;
+  image-rendering: pixelated;
+}
+
+#me-pix {
+  position: relative; /* base image is static */
+}
+
+.hidden {
   opacity: 0;
-  transition: opacity 0.1s ease-in-out;
 }
 
-/* Main image always visible */
-#main-pix {
-  position: relative;
+.visible {
   opacity: 1;
-  z-index: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* Blink layers overlay */
-#blink-pix, #cat-blink {
-  z-index: 2;
-  pointer-events: none;
-}
 
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */

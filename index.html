@@ -172,22 +172,24 @@
     </div>
 
     <script>
-      function blinkImage(imageId, interval, duration) {
-        const img = document.getElementById(imageId);
+      const blinkImg = document.getElementById('blink-img');
+      const catBlinkImg = document.getElementById('cat-blink-img');
+
+      function blink(image, duration = 150, interval = 5000) {
         setInterval(() => {
-          img.style.opacity = 1;
+          image.classList.add('visible');
+          image.classList.remove('hidden');
           setTimeout(() => {
-            img.style.opacity = 0;
+            image.classList.remove('visible');
+            image.classList.add('hidden');
           }, duration);
         }, interval);
       }
 
-      // Make "blinking" appear every 4 seconds for 150ms
-      blinkImage('blink-pix', 4000, 150);
-
-      // Make "cat_blinking" appear every 7 seconds for 200ms
-      blinkImage('cat-blink', 7000, 200);
+      blink(blinkImg, 150, 4000); // human blink every 4s
+      blink(catBlinkImg, 200, 6200); // cat blink every 6.2s
     </script>
+
 
 	</body>
 </html>
