@@ -142,8 +142,13 @@ body {
 
 .project-card-text.expanded {
   overflow: visible;
-  max-height: 1000px; /* large enough for full content */
+  text-overflow: unset;
+  display: block; /* disable the -webkit-box truncation */
+  line-clamp: unset;
+  -webkit-box-orient: unset;
+  max-height: none;
 }
+
 
 .read-more-btn {
   padding: 8px 16px;
