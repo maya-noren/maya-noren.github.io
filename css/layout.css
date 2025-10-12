@@ -150,12 +150,12 @@ body {
 .project-card-text {
   overflow: hidden;
   max-height: 4.8em; /* ~3 lines (1.6em * 3) */
-  line-height: 1.2;  /* adjust to your font’s actual line height */
+  line-height: 1.6;  /* adjust to your font’s actual line height */
   transition: max-height 0.4s ease;
 }
 
 .project-card-text.expanded {
-  max-height: none; /* large enough for full content */
+  max-height: 1000px; /* large enough for full content */
 }
 
 .read-more-btn {
