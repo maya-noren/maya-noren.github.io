@@ -171,15 +171,13 @@ body {
       height: auto;
     }
 
-
 #pixel-images {
   position: relative;
-  width: 400px; 
-  height: auto;
+  width: 400px;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .pixel-img {
@@ -190,25 +188,28 @@ body {
   height: 100%;
   object-fit: cover;
   image-rendering: pixelated;
+  transform: translateZ(0);
+  will-change: opacity;
   transition: opacity 0.15s ease-in-out;
 }
 
 #me-pix {
   position: relative;
-  opacity: 1;
   z-index: 1;
+}
+
+#blink-img,
+#cat-blink-img {
+  z-index: 2;
 }
 
 .hidden {
   opacity: 0;
-  z-index: 0;
 }
 
 .visible {
   opacity: 1;
-  z-index: 2;
 }
-
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
