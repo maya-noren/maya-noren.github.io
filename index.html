@@ -186,15 +186,15 @@
     <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
 
     <!-- Pixel labels -->
-    <div class="walk-label" data-start="10" data-end="20">HTML</div>
-    <div class="walk-label" data-start="40" data-end="50">CSS</div>
-    <div class="walk-label" data-start="70" data-end="80">JavaScript</div>
+    <div class="walk-label" data-label="HTML">HTML</div>
+    <div class="walk-label" data-label="CSS">CSS</div>
+    <div class="walk-label" data-label="JavaScript">JavaScript</div>
 
     <div id="walker"></div>
   </div>
 </section>
 
-<!-- Include pixel font -->
+<!-- Pixel font -->
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
@@ -234,25 +234,26 @@
   .walk-label {
     position: absolute;
     bottom: 60px;
-    padding: 2px 6px;
     font-weight: bold;
     font-family: "Press Start 2P", monospace;
     font-size: 12px;
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    opacity: 0.8;
-    image-rendering: pixelated;
+    color: white;
+    background-color: black;
+    padding: 2px 6px;
     z-index: 3;
     white-space: nowrap;
-    transition: opacity 0.3s, color 0.3s, background-color 0.3s;
+    image-rendering: pixelated;
+    transition: transform 0.2s, color 0.3s, background-color 0.3s;
   }
 
   .walk-label.highlight {
-    color: white;
-    background-color: black;
-    opacity: 1;
+    transform: scale(1.1);
   }
+
+  /* Example label positions - adjust as needed */
+  .walk-label:nth-child(1) { left: 80px; }   /* HTML */
+  .walk-label:nth-child(2) { left: 250px; }  /* CSS */
+  .walk-label:nth-child(3) { left: 420px; }  /* JavaScript */
 </style>
 
 <script>
@@ -264,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
   sprite.src = './assets/sprite_sheet.png';
 
   sprite.onload = function() {
-    const frames = 8;       // 8 frames in a single row
+    const frames = 8; // 8 frames in one row
     const frameWidth = sprite.width / frames;
     const frameHeight = sprite.height;
 
@@ -281,16 +282,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let direction = 1;
     let keys = { left: false, right: false };
     let lastFrameTime = 0;
-    const frameInterval = 150; // ms per frame (~6–7 FPS)
-
-    // calculate sprite width as % of container for boundaries
-    const walkerWidthPercent = (frameWidth * scale) / walker.parentElement.offsetWidth * 100;
+    const frameInterval = 150;
 
     function checkHighlights() {
+      const walkRect = walker.getBoundingClientRect();
+      const walkCenterX = walkRect.left + walkRect.width / 2;
+
       labels.forEach(label => {
-        const start = parseFloat(label.dataset.start);
-        const end = parseFloat(label.dataset.end);
-        if (pos >= start && pos <= end) {
+        const labelRect = label.getBoundingClientRect();
+        if (walkCenterX >= labelRect.left && walkCenterX <= labelRect.right) {
           label.classList.add('highlight');
         } else {
           label.classList.remove('highlight');
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function update(timestamp) {
-      if (keys.right) { pos = Math.min(pos + 0.8, 100 - walkerWidthPercent); direction = 1; }
+      if (keys.right) { pos = Math.min(pos + 0.8, 100 - (walker.offsetWidth / walker.parentElement.offsetWidth * 100)); direction = 1; }
       if (keys.left)  { pos = Math.max(pos - 0.8, 0); direction = -1; }
 
       walker.style.left = pos + "%";
