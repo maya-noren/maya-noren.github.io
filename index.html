@@ -86,11 +86,11 @@
   #walk-area {
     position: relative;
     width: 100%;
-    height: 180px;       /* section height */
+    height: 180px;
     overflow: hidden;
     image-rendering: pixelated;
     margin: 50px 0;
-    border: none;        /* remove border */
+    border: none;
   }
 
   #walk-bg {
@@ -117,75 +117,65 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const walker = document.getElementById("walker");
-    if (!walker) return;
+document.addEventListener("DOMContentLoaded", function() {
+  const walker = document.getElementById("walker");
+  if (!walker) return;
 
-    const sprite = new Image();
-    sprite.src = './assets/sprite_sheet.png';
+  const sprite = new Image();
+  sprite.src = './assets/sprite_sheet.png';
 
-    sprite.onload = function() {
-      const rows = 2;            // 2 rows in sheet
-      const cols = 4;            // frames per row
-      const walkCycleRows = 2;   // both rows used
-      const totalFrames = cols * walkCycleRows; // 8 frames
-      const frameWidth = sprite.width / cols;
-      const frameHeight = sprite.height / rows;
+  sprite.onload = function() {
+    const frames = 8;       // 8 frames in the row
+    const frameWidth = sprite.width / frames;
+    const frameHeight = sprite.height;
 
-      // scale to desired height
-      const desiredHeight = 128;
-      const scale = desiredHeight / (frameHeight * walkCycleRows);
-      walker.style.width = frameWidth * scale + "px";
-      walker.style.height = frameHeight * walkCycleRows * scale + "px";
-      walker.style.backgroundSize = sprite.width * scale + "px " + sprite.height * scale + "px";
+    const desiredHeight = 128;
+    const scale = desiredHeight / frameHeight;
+    walker.style.width = frameWidth * scale + "px";
+    walker.style.height = frameHeight * scale + "px";
+    walker.style.backgroundSize = sprite.width * scale + "px " + sprite.height * scale + "px";
 
-      let pos = 5;
-      let frame = 0;
-      let direction = 1; // 1 = right, -1 = left
-      let keys = { left: false, right: false };
-      let lastFrameTime = 0;
-      const frameInterval = 150; // ms per frame (~6 FPS)
+    let pos = 5;
+    let frame = 0;
+    let direction = 1;
+    let keys = { left: false, right: false };
+    let lastFrameTime = 0;
+    const frameInterval = 150; // ms per frame
 
-      function update(timestamp) {
-        // move walker
-        if (keys.right) { pos = Math.min(pos + 0.4, 95); direction = 1; }
-        if (keys.left)  { pos = Math.max(pos - 0.4, 0); direction = -1; }
-        walker.style.left = pos + "%";
-        walker.style.transform = `scaleX(${direction})`;
+    function update(timestamp) {
+      if (keys.right) { pos = Math.min(pos + 0.8, 95); direction = 1; }
+      if (keys.left)  { pos = Math.max(pos - 0.8, 0); direction = -1; }
+      walker.style.left = pos + "%";
+      walker.style.transform = `scaleX(${direction})`;
 
-        // update frame at controlled interval
-        if (keys.left || keys.right) {
-          if (!lastFrameTime) lastFrameTime = timestamp;
-          if (timestamp - lastFrameTime > frameInterval) {
-            frame = (frame + 1) % totalFrames;
-            lastFrameTime = timestamp;
-          }
-        } else {
-          frame = 0; // idle
+      if (keys.left || keys.right) {
+        if (!lastFrameTime) lastFrameTime = timestamp;
+        if (timestamp - lastFrameTime > frameInterval) {
+          frame = (frame + 1) % frames;
+          lastFrameTime = timestamp;
         }
-
-        const row = Math.floor(frame / cols);
-        const col = frame % cols;
-        const bgX = -col * frameWidth * scale;
-        const bgY = -row * frameHeight * scale;
-        walker.style.backgroundPosition = `${bgX}px ${bgY}px`;
-
-        requestAnimationFrame(update);
+      } else {
+        frame = 0;
       }
 
-      requestAnimationFrame(update);
+      const bgX = -frame * frameWidth * scale;
+      walker.style.backgroundPosition = `${bgX}px 0px`;
 
-      // keyboard events
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") keys.right = true;
-        if (e.key === "ArrowLeft")  keys.left = true;
-      });
-      document.addEventListener("keyup", e => {
-        if (e.key === "ArrowRight") keys.right = false;
-        if (e.key === "ArrowLeft")  keys.left = false;
-      });
-    };
-  });
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") keys.right = true;
+      if (e.key === "ArrowLeft")  keys.left = true;
+    });
+    document.addEventListener("keyup", e => {
+      if (e.key === "ArrowRight") keys.right = false;
+      if (e.key === "ArrowLeft")  keys.left = false;
+    });
+  };
+});
 </script>
 
 
