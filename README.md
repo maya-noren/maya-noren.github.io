@@ -1,1 +1,3 @@
-This is my portfolio
+This is my portfolio site!
+
+Tech stack: HTML, Javascript, CSS
