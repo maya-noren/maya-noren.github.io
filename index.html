@@ -125,12 +125,13 @@ document.addEventListener("DOMContentLoaded", function() {
   sprite.src = './assets/sprite_sheet.png';
 
   sprite.onload = function() {
-    const rows = 4;
-    const cols = 4;           // columns per row
-    const walkCycleRows = 2;  // top 2 rows = 8 frames
+    const rows = 2;           // only 2 rows
+    const cols = 4;           // number of columns per row
+    const walkCycleRows = 2;  // both rows used
     const totalFrames = cols * walkCycleRows; // 8 frames
     const frameWidth = sprite.width / cols;
     const frameHeight = sprite.height / rows;
+
 
     // --- scale to fit section height ---
     const desiredHeight = 128; 
