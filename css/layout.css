@@ -177,8 +177,10 @@ body {
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0;              /* removes auto-centering */
+  image-rendering: pixelated;
 }
+
 
 .pixel-img {
   position: absolute;
