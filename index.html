@@ -62,10 +62,6 @@
       </div>
 
       <!-- ABOUT SECTION -->
-      <!-- 
-        - Change the subheader-text to whatever header you want
-        - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
-      -->
       <div id="about-section">
         <span class="subheader-text">About Me</span>
         <div class="about-section-content">
@@ -82,7 +78,7 @@
         <div id="walk-area">
           <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
 
-          <!-- Pixel labels -->
+          <!-- pixel labels -->
           <div class="walk-labels">
             <div class="walk-label">C++</div>
             <div class="walk-label">C</div>
@@ -99,7 +95,6 @@
         <div class="image-caption">Move with &larr; &rarr;</div>
       </section>
 
-      <!-- Pixel font -->
       <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
       <style>
@@ -262,75 +257,40 @@
         - Change the subheader-text to whatever header you want
         - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
       -->
-      <div id="about-section">
+      <div id="experience-section">
         <span class="subheader-text">Experience</span>
-        <div class="about-section-content">
-          <div class="body-text">I’m a computer science student at the University of Michigan with a strong foundation in software development, algorithms, and electronics. I enjoy tackling complex problems and creating practical solutions, whether through coding projects, hackathons, or collaborative class work.</div>
-          <div class="body-text">Beyond the screen, I love working with my hands (I'm also pursing a minor in electrical engineering). In my free time, I love experimenting with small personal projects, learning new technologies, and designing a melange of art creations.</div>
-          <div class="body-test">I'm open to opportunities where I can learn, contribute, and create impact!</div>
+        <div class="experience-section-content">
+          <div class="body-text"> <span class="subheader-text" style="display:inline-block; font-size:inherit; font-weight:700; margin-top:15px">Email:</span>
+            mnoren@umich.edu</div>
         </div>
       </div>
+      
 
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-work-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
-        <span class="subheader-text">My Work / My Projects</span>
+        <span class="subheader-text">My Projects</span>
 
         <div class="projects-container">
-          <!-- 
-            TODO
 
-            This is where the project cards live. Here's a base level project card for you to copy:
-            <div class="project-card">
-              <img src="./assets/images/IMAGE_NAME" class="project-image">
-              <div class="project-card-text-container">
-                <div class="subheader-text project-title">PROJECT_NAME</div>
-                <div class="body-text project-card-text">SMALL_PROJECT_DESCRIPTION</div>
-              </div>
-              <a class="button" href="./project-pages/PROJECT_PAGE_NAME.html">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
+          <div class="project-card">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Pest Control</div>
+              <div class="body-text project-card-text">Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium</div>
             </div>
+          </div>
 
-            - To add a project to the this area, copy the above, paste it below this comment, and change the following:
-                - IMAGE_NAME: the name of the image file in assets/images
-                - PROJECT_NAME: the name of the project (keep it short, it only shows 1 line)
-                - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
-                - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
-          -->
           <div class="project-card">
-            <img src="./assets/images/desktop.jpeg" class="project-image">
             <div class="project-card-text-container">
-              <div class="subheader-text project-title">Project Name</div>
+              <div class="subheader-text project-title">Simulation Queue System</div>
               <div class="body-text project-card-text">Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium</div>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
+
           <div class="project-card">
-            <img src="./assets/images/code.jpeg" class="project-image">
             <div class="project-card-text-container">
-              <div class="subheader-text project-title">Project Name</div>
+              <div class="subheader-text project-title">Data Manager</div>
               <div class="body-text project-card-text">Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium</div>
             </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-          </div>
-          <div class="project-card">
-            <img src="./assets/images/sketchbook.jpeg" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Super Long Project Name That Should be Hidden</div>
-              <div class="body-text project-card-text">Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium</div>
-            </div>
-            <a class="button" href="./project-pages/project-template.html">
-              <span class="button-text">Read More</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
           </div>
         </div>
       </div>
@@ -352,51 +312,46 @@
       </a>
     </div>
 
-<script>
-  const blinkImg = document.getElementById('blink-img');
-  const catBlinkImg = document.getElementById('cat-blink-img');
+    <!-- PFP ANIMATION -->
+    <script>
+      const blinkImg = document.getElementById('blink-img');
+      const catBlinkImg = document.getElementById('cat-blink-img');
 
-  function blink(image, duration = 150, interval = 5000, initialDelay = 1000) {
-    setTimeout(() => {
-      doBlink();
-      setInterval(doBlink, interval);
-    }, initialDelay);
+      function blink(image, duration = 150, interval = 5000, initialDelay = 1000) {
+        setTimeout(() => {
+          doBlink();
+          setInterval(doBlink, interval);
+        }, initialDelay);
 
-    function doBlink() {
-      image.style.opacity = "1";
-      setTimeout(() => {
-        image.style.opacity = "0";
-      }, duration);
-    }
-  }
+        function doBlink() {
+          image.style.opacity = "1";
+          setTimeout(() => {
+            image.style.opacity = "0";
+          }, duration);
+        }
+      }
 
-  function catBlink(image, baseInterval = 6000, initialDelay = 3000) {
-    setTimeout(() => {
-      doCatBlink();
-    }, initialDelay);
+      function catBlink(image, baseInterval = 6000, initialDelay = 3000) {
+        setTimeout(() => {
+          doCatBlink();
+        }, initialDelay);
 
-    function doCatBlink() {
-      // Show the blink
-      image.style.opacity = "1";
+        function doCatBlink() {
+          image.style.opacity = "1";
 
-      // Linger longer on the blink
-      setTimeout(() => {
-        image.style.opacity = "0";
-      }, 300); // 300ms closed
+          setTimeout(() => {
+            image.style.opacity = "0";
+          }, 300);
 
-      // Schedule the next blink with a little randomness
-      const nextBlink = baseInterval + (Math.random() * 2000 - 1000); // ±1s variation
-      setTimeout(doCatBlink, nextBlink);
-    }
-  }
+          const nextBlink = baseInterval + (Math.random() * 2000 - 1000);
+          setTimeout(doCatBlink, nextBlink);
+        }
+      }
 
-  // Normal blink (for the human character)
-  blink(blinkImg, 120, 4000, 2000);
+      blink(blinkImg, 120, 4000, 2000);
 
-  // Cat blink (single, lingering, randomized intervals)
-  catBlink(catBlinkImg, 6000, 3000);
-</script>
-
+      catBlink(catBlinkImg, 6000, 3000);
+    </script>
 
 	</body>
 </html>
