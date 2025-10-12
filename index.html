@@ -77,6 +77,7 @@
       <!-- SKILLS SECTION -->
       <section id="walk-section">
         <span class="subheader-text">Skills</span>
+        <span class="image-caption">Use arrow keys to move</span>
 
         <div id="walk-area">
           <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
@@ -88,14 +89,19 @@
 
           <div id="walker"></div>
         </div>
-
-        <span class="image-caption">Use arrow keys to move</span>
       </section>
 
       <!-- Pixel font -->
       <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
       <style>
+        .image-caption {
+          display: block;
+          width: 100%;         /* matches #walk-area width */
+          max-width: 900px;    /* same as #walk-area */
+          margin-top: 8px;   
+        }
+
         #walk-area {
           position: relative;
           width: 100%;
@@ -146,10 +152,10 @@
           color: white;
           background-color: black;
         }
-        
-        .walk-label:nth-of-type(1) { left: 200px; bottom: 60px; }
-        .walk-label:nth-of-type(2) { left: 400px; bottom: 60px; } 
-        .walk-label:nth-of-type(3) { left: 600px; bottom: 60px; }
+
+        .walk-label:nth-of-type(1) { left: 200px; bottom: 90px; }
+        .walk-label:nth-of-type(2) { left: 400px; bottom: 90px; } 
+        .walk-label:nth-of-type(3) { left: 600px; bottom: 90px; }
       </style>
 
       <script>
