@@ -83,12 +83,14 @@
           <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
 
           <!-- Pixel labels -->
-          <div class="walk-label" data-label="C++">C++</div>
-          <div class="walk-label" data-label="C">C</div>
-          <div class="walk-label" data-label="Python">Python</div>
-          <div class="walk-label" data-label="HTML">HTML</div>
-          <div class="walk-label" data-label="Javascript">Javascript</div>
-          <div class="walk-label" data-label="CSS">CSS</div>
+          <div class="walk-labels">
+            <div class="walk-label">C++</div>
+            <div class="walk-label">C</div>
+            <div class="walk-label">Python</div>
+            <div class="walk-label">HTML</div>
+            <div class="walk-label">JavaScript</div>
+            <div class="walk-label">CSS</div>
+          </div>
 
           <div id="walker"></div>
         </div>
@@ -130,6 +132,16 @@
           image-rendering: pixelated;
           z-index: 2;
           transform-origin: center;
+        }
+
+        .walk-labels {
+          position: absolute;
+          bottom: 120px; /* adjust vertical placement */
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: space-around; /* even spacing */
+          z-index: 3;
         }
 
         .walk-label {
