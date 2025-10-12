@@ -142,30 +142,32 @@ body {
 }
 
 .project-card-text {
-  display: -webkit-box;
-  -line-clamp: 3; /* show 3 lines initially */
-  -webkit-box-orient: vertical;
+  display: block;
+  max-height: 4.5em;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .project-card-text.expanded {
-  -line-clamp: unset;
-  overflow: visible;
+  max-height: none;
 }
 
 .read-more-btn {
-  background: none;
-  border: none;
-  color: #0077ff;
-  font-size: 0.9rem;
-  cursor: pointer;
-  align-self: flex-start;
-  padding: 0;
+  padding: 8px 16px;
+  border: 3px solid #141414;
+  border-radius: 50px;
+  color: black;
+  text-decoration: none;
+  width: fit-content;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 .read-more-btn:hover {
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  cursor: pointer;
 }
 
 
