@@ -351,6 +351,14 @@
 
 
       function blink(image, duration = 150, interval = 5000) {
+      
+        image.classList.add('visible');
+        image.classList.remove('hidden');
+        setTimeout(() => {
+          image.classList.remove('visible');
+          image.classList.add('hidden');
+        }, duration);
+
         setInterval(() => {
           image.classList.add('visible');
           image.classList.remove('hidden');
