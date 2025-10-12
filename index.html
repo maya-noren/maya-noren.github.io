@@ -76,10 +76,63 @@
 
       <!-- SKILLS SECTION -->
       <section id="walk-section">
-        <div id="walk-area">
-          <div id="walker"></div>
-        </div>
-      </section>
+  <div id="walk-area">
+    <div id="walker"></div>
+  </div>
+</section>
+
+<style>
+  /* Container */
+  #walk-area {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 180px;
+    background: #ddd; /* visible gray for testing */
+    border: 2px solid #000;
+    overflow: hidden;
+    image-rendering: pixelated;
+    margin: 50px auto;
+  }
+
+  /* Sprite */
+  #walker {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 64px;  /* default frame width */
+    height: 64px; /* default frame height */
+    background-image: url('./assets/sprite_sheet.png');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: auto 64px; /* scale to fit height */
+    image-rendering: pixelated;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var walker = document.getElementById("walker");
+    if (!walker) return;
+
+    var pos = 5; // initial left %
+
+    // Simple arrow key movement
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") {
+        pos = Math.min(pos + 5, 90);
+        walker.style.left = pos + "%";
+        walker.style.transform = "scaleX(1)";
+      }
+      if (e.key === "ArrowLeft") {
+        pos = Math.max(pos - 5, 0);
+        walker.style.left = pos + "%";
+        walker.style.transform = "scaleX(-1)";
+      }
+    });
+  });
+</script>
+
 
       <!-- EXPERIENCE SECTION -->
       <!-- 
