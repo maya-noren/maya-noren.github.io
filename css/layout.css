@@ -142,14 +142,16 @@ body {
 }
 
 .project-card-text {
-  display: block;
-  max-height: 4.5em;
+  display: -webkit-box;
+  -line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .project-card-text.expanded {
-  max-height: none;
+  -line-clamp: unset;
+  overflow: visible;
 }
 
 .read-more-btn {
