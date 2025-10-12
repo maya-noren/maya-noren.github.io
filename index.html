@@ -143,8 +143,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const frameInterval = 150; // ms per frame
 
     function update(timestamp) {
-      if (keys.right) { pos = Math.min(pos + 0.8, 95); direction = 1; }
-      if (keys.left)  { pos = Math.max(pos - 0.8, 0); direction = -1; }
+      const walkerWidthPercent = (frameWidth * scale) / walker.parentElement.offsetWidth * 100;
+      if (keys.right) { pos = Math.min(pos + 0.4, 100 - walkerWidthPercent); direction = 1; }
+      if (keys.left)  { pos = Math.max(pos - 0.4, 0); direction = -1; }
       walker.style.left = pos + "%";
       walker.style.transform = `scaleX(${direction})`;
 
