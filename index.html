@@ -352,22 +352,59 @@
       </a>
     </div>
 
-    <script>
-      const blinkImg = document.getElementById('blink-img');
-      const catBlinkImg = document.getElementById('cat-blink-img');
+<script>
+  const blinkImg = document.getElementById('blink-img');
+  const catBlinkImg = document.getElementById('cat-blink-img');
 
-      function blink(image, duration = 150, interval = 5000) {
-        setInterval(() => {
+  function blink(image, duration = 150, interval = 5000, initialDelay = 1000) {
+    setTimeout(() => {
+      doBlink();
+      setInterval(doBlink, interval);
+    }, initialDelay);
+
+    function doBlink() {
+      image.style.opacity = "1";
+      setTimeout(() => {
+        image.style.opacity = "0";
+      }, duration);
+    }
+  }
+
+  function catBlink(image, interval = 6200, initialDelay = 3000) {
+    setTimeout(() => {
+      doCatBlink();
+      setInterval(doCatBlink, interval);
+    }, initialDelay);
+
+    function doCatBlink() {
+      // Randomly choose between a single or double blink
+      const isDoubleBlink = Math.random() < 0.4; // 40% chance of double blink
+
+      // First blink
+      image.style.opacity = "1";
+      setTimeout(() => {
+        image.style.opacity = "0";
+      }, 200); // stays closed slightly longer
+
+      if (isDoubleBlink) {
+        // Second blink a short moment later
+        setTimeout(() => {
           image.style.opacity = "1";
           setTimeout(() => {
             image.style.opacity = "0";
-          }, duration);
-        }, interval);
+          }, 180);
+        }, 400); // pause between blinks
       }
+    }
+  }
 
-      blink(blinkImg, 90, 4000);
-      blink(catBlinkImg, 150, 6200);
-    </script>
+  // Normal blink (for the human character)
+  blink(blinkImg, 120, 4000, 2000);
+
+  // Cat blink (more expressive and varied)
+  catBlink(catBlinkImg, 6200, 3000);
+</script>
+
 
 	</body>
 </html>
