@@ -5,35 +5,33 @@ if (document.getElementById('my-work-link')) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // --- Smooth scroll ---
-  var myWorkLink = document.getElementById('my-work-link');
-  if (myWorkLink) {
-    myWorkLink.addEventListener('click', function() {
-      document.getElementById('my-work-section').scrollIntoView({behavior: "smooth"});
-    });
-  }
-
-  // --- Walking sprite ---
   var walker = document.getElementById("walker");
   if (!walker) return;
 
   var pos = 5;
   var walking = false;
 
+  // Sprite sheet
   var sprite = new Image();
   sprite.src = "./assets/sprite_sheet.png";
   sprite.onload = function() {
-    var frameCount = 4; // adjust if needed
+    var frameCount = 4; // number of frames per row
     var frameWidth = sprite.width / frameCount;
-    var frameHeight = sprite.height / 2; // top row only
+    var frameHeight = sprite.height / 2; // top row
+
     walker.style.width = frameWidth + "px";
     walker.style.height = frameHeight + "px";
 
+    // show first frame immediately
+    walker.style.backgroundPosition = "0px 0px";
+
+    // create keyframes dynamically
     var styleSheet = document.createElement("style");
     styleSheet.innerHTML = "@keyframes walkCycle { from { background-position: 0 0; } to { background-position: -" + (frameWidth * frameCount) + "px 0; } }";
     document.head.appendChild(styleSheet);
   };
 
+  // movement
   document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       if (!walking) {

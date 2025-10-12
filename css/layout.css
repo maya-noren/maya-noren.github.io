@@ -273,12 +273,14 @@ body {
   position: absolute;
   bottom: 0;
   left: 5%;
-  width: 64px;
-  height: 64px;
+  width: 64px; /* will be adjusted by JS */
+  height: 64px; /* will be adjusted by JS */
   background-image: url('./assets/sprite_sheet.png');
+  background-repeat: no-repeat;
   background-position: 0 0;
   image-rendering: pixelated;
 }
+
 
 .walking {
   animation: walkCycle 0.6s steps(4) infinite;
