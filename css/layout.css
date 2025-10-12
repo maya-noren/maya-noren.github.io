@@ -141,18 +141,27 @@ body {
   gap: 34px;
 }
 
+.project-card-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* or however much space you want between text and button */
+}
+
 .project-card-text {
   display: -webkit-box;
-  -line-clamp: 3;
+  line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: max-height 0.3s ease;
+  max-height: 4.8em; /* roughly 3 lines, adjust as needed */
 }
 
 .project-card-text.expanded {
-  -line-clamp: unset;
+  line-clamp: unset;
   overflow: visible;
+  max-height: none;
 }
+
 
 .read-more-btn {
   padding: 8px 16px;
