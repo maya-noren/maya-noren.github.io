@@ -74,24 +74,34 @@
         </div>
       </div>
 
-      <!-- SKILLS SECTION
-      <section id="walk-section">
-        <span class="subheader-text">Skills</span>
+      <!-- SKILLS SECTION -->
+      <span class="subheader-text">Skills</span>
 
+            <section id="walk-section">
         <div id="walk-area">
           <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
+
+          <!-- Pixel labels -->
+          <div class="walk-label" data-label="HTML">HTML</div>
+          <div class="walk-label" data-label="CSS">CSS</div>
+          <div class="walk-label" data-label="JavaScript">JavaScript</div>
+
           <div id="walker"></div>
         </div>
       </section>
+
+      <!-- Pixel font -->
+      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
       <style>
         #walk-area {
           position: relative;
           width: 100%;
+          max-width: 900px;
           height: 180px;
           overflow: hidden;
           image-rendering: pixelated;
-          margin: 50px 0;
+          margin: 50px auto;
           border: none;
         }
 
@@ -116,6 +126,31 @@
           z-index: 2;
           transform-origin: center;
         }
+
+        .walk-label {
+          position: absolute;
+          bottom: 60px;
+          font-weight: bold;
+          font-family: "Press Start 2P", monospace;
+          font-size: 12px;
+          color: black;
+          background-color: white;
+          padding: 2px 6px;
+          z-index: 3;
+          white-space: nowrap;
+          image-rendering: pixelated;
+          transition: transform 0.2s, color 0.3s, background-color 0.3s;
+        }
+
+        .walk-label.highlight {
+          color: white;
+          background-color: black;
+        }
+
+        /* Example label positions - adjust as needed */
+        .walk-label:nth-child(1) { left: 100px; bottom: 200px}   /* HTML */
+        .walk-label:nth-child(2) { left: 300px; bottom: 200px}  /* CSS */
+        .walk-label:nth-child(3) { left: 600px; bottom: 200px}  /* JavaScript */
       </style>
 
       <script>
@@ -127,7 +162,7 @@
         sprite.src = './assets/sprite_sheet.png';
 
         sprite.onload = function() {
-          const frames = 8;       // 8 frames in the row
+          const frames = 8; // 8 frames in one row
           const frameWidth = sprite.width / frames;
           const frameHeight = sprite.height;
 
@@ -137,17 +172,33 @@
           walker.style.height = frameHeight * scale + "px";
           walker.style.backgroundSize = sprite.width * scale + "px " + sprite.height * scale + "px";
 
+          const labels = document.querySelectorAll('.walk-label');
+
           let pos = 5;
           let frame = 0;
           let direction = 1;
           let keys = { left: false, right: false };
           let lastFrameTime = 0;
-          const frameInterval = 150; // ms per frame
+          const frameInterval = 150;
+
+          function checkHighlights() {
+            const walkRect = walker.getBoundingClientRect();
+            const walkCenterX = walkRect.left + walkRect.width / 2;
+
+            labels.forEach(label => {
+              const labelRect = label.getBoundingClientRect();
+              if (walkCenterX >= labelRect.left && walkCenterX <= labelRect.right) {
+                label.classList.add('highlight');
+              } else {
+                label.classList.remove('highlight');
+              }
+            });
+          }
 
           function update(timestamp) {
-            const walkerWidthPercent = (frameWidth * scale) / walker.parentElement.offsetWidth * 100;
-            if (keys.right) { pos = Math.min(pos + 0.4, 100 - walkerWidthPercent); direction = 1; }
-            if (keys.left)  { pos = Math.max(pos - 0.4, 0); direction = -1; }
+            if (keys.right) { pos = Math.min(pos + 0.8, 100 - (walker.offsetWidth / walker.parentElement.offsetWidth * 100)); direction = 1; }
+            if (keys.left)  { pos = Math.max(pos - 0.8, 0); direction = -1; }
+
             walker.style.left = pos + "%";
             walker.style.transform = `scaleX(${direction})`;
 
@@ -164,6 +215,7 @@
             const bgX = -frame * frameWidth * scale;
             walker.style.backgroundPosition = `${bgX}px 0px`;
 
+            checkHighlights();
             requestAnimationFrame(update);
           }
 
@@ -173,170 +225,14 @@
             if (e.key === "ArrowRight") keys.right = true;
             if (e.key === "ArrowLeft")  keys.left = true;
           });
+
           document.addEventListener("keyup", e => {
             if (e.key === "ArrowRight") keys.right = false;
             if (e.key === "ArrowLeft")  keys.left = false;
           });
         };
       });
-      </script> -->
-
-      <section id="walk-section">
-  <div id="walk-area">
-    <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
-
-    <!-- Pixel labels -->
-    <div class="walk-label" data-label="HTML">HTML</div>
-    <div class="walk-label" data-label="CSS">CSS</div>
-    <div class="walk-label" data-label="JavaScript">JavaScript</div>
-
-    <div id="walker"></div>
-  </div>
-</section>
-
-<!-- Pixel font -->
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-<style>
-  #walk-area {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    height: 180px;
-    overflow: hidden;
-    image-rendering: pixelated;
-    margin: 50px auto;
-    border: none;
-  }
-
-  #walk-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    image-rendering: pixelated;
-    z-index: 0;
-  }
-
-  #walker {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    background-image: url('./assets/sprite_sheet.png');
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    image-rendering: pixelated;
-    z-index: 2;
-    transform-origin: center;
-  }
-
-  .walk-label {
-    position: absolute;
-    bottom: 60px;
-    font-weight: bold;
-    font-family: "Press Start 2P", monospace;
-    font-size: 12px;
-    color: white;
-    background-color: black;
-    padding: 2px 6px;
-    z-index: 3;
-    white-space: nowrap;
-    image-rendering: pixelated;
-    transition: transform 0.2s, color 0.3s, background-color 0.3s;
-  }
-
-  .walk-label.highlight {
-    color: black;
-    background-color: white;
-  }
-
-  /* Example label positions - adjust as needed */
-  .walk-label:nth-child(1) { left: 80px; }   /* HTML */
-  .walk-label:nth-child(2) { left: 250px; }  /* CSS */
-  .walk-label:nth-child(3) { left: 420px; }  /* JavaScript */
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const walker = document.getElementById("walker");
-  if (!walker) return;
-
-  const sprite = new Image();
-  sprite.src = './assets/sprite_sheet.png';
-
-  sprite.onload = function() {
-    const frames = 8; // 8 frames in one row
-    const frameWidth = sprite.width / frames;
-    const frameHeight = sprite.height;
-
-    const desiredHeight = 128;
-    const scale = desiredHeight / frameHeight;
-    walker.style.width = frameWidth * scale + "px";
-    walker.style.height = frameHeight * scale + "px";
-    walker.style.backgroundSize = sprite.width * scale + "px " + sprite.height * scale + "px";
-
-    const labels = document.querySelectorAll('.walk-label');
-
-    let pos = 5;
-    let frame = 0;
-    let direction = 1;
-    let keys = { left: false, right: false };
-    let lastFrameTime = 0;
-    const frameInterval = 150;
-
-    function checkHighlights() {
-      const walkRect = walker.getBoundingClientRect();
-      const walkCenterX = walkRect.left + walkRect.width / 2;
-
-      labels.forEach(label => {
-        const labelRect = label.getBoundingClientRect();
-        if (walkCenterX >= labelRect.left && walkCenterX <= labelRect.right) {
-          label.classList.add('highlight');
-        } else {
-          label.classList.remove('highlight');
-        }
-      });
-    }
-
-    function update(timestamp) {
-      if (keys.right) { pos = Math.min(pos + 0.8, 100 - (walker.offsetWidth / walker.parentElement.offsetWidth * 100)); direction = 1; }
-      if (keys.left)  { pos = Math.max(pos - 0.8, 0); direction = -1; }
-
-      walker.style.left = pos + "%";
-      walker.style.transform = `scaleX(${direction})`;
-
-      if (keys.left || keys.right) {
-        if (!lastFrameTime) lastFrameTime = timestamp;
-        if (timestamp - lastFrameTime > frameInterval) {
-          frame = (frame + 1) % frames;
-          lastFrameTime = timestamp;
-        }
-      } else {
-        frame = 0;
-      }
-
-      const bgX = -frame * frameWidth * scale;
-      walker.style.backgroundPosition = `${bgX}px 0px`;
-
-      checkHighlights();
-      requestAnimationFrame(update);
-    }
-
-    requestAnimationFrame(update);
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "ArrowRight") keys.right = true;
-      if (e.key === "ArrowLeft")  keys.left = true;
-    });
-
-    document.addEventListener("keyup", e => {
-      if (e.key === "ArrowRight") keys.right = false;
-      if (e.key === "ArrowLeft")  keys.left = false;
-    });
-  };
-});
-</script>
+      </script>
 
 
       <!-- EXPERIENCE SECTION -->
