@@ -88,7 +88,7 @@
 
           <div id="walker"></div>
         </div>
-        <span class="image-caption">Use arrow keys to move</span>
+         <div class="image-caption">Use arrow keys to move</div>
       </section>
 
       <!-- Pixel font -->
@@ -96,10 +96,12 @@
 
       <style>
         .image-caption {
-          display: block;
-          width: 100%;         /* matches #walk-area width */
-          max-width: 900px;    /* same as #walk-area */
-          margin-top: 8px;   
+            width: 100%;
+            max-width: 900px;     /* same as walk-area */
+            margin: 0;            /* remove default margins */
+            margin-top: 4px;      /* tiny gap below the box */
+            padding: 0;
+            line-height: 1;
         }
 
         #walk-area {
@@ -153,9 +155,9 @@
           background-color: black;
         }
 
-        .walk-label:nth-of-type(1) { left: 200px; bottom: 100px; }
-        .walk-label:nth-of-type(2) { left: 400px; bottom: 100px; } 
-        .walk-label:nth-of-type(3) { left: 600px; bottom: 100px; }
+        .walk-label:nth-of-type(1) { left: 200px; bottom: 110px; }
+        .walk-label:nth-of-type(2) { left: 400px; bottom: 110px; } 
+        .walk-label:nth-of-type(3) { left: 600px; bottom: 110px; }
       </style>
 
       <script>
