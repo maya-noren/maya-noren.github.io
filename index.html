@@ -84,11 +84,10 @@
 </section>
 
 <style>
-  /* WALK SECTION */
   #walk-area {
     position: relative;
-    width: 100%;       /* full width */
-    height: 180px;     /* section height */
+    width: 100%;
+    height: 180px;
     overflow: hidden;
     image-rendering: pixelated;
     margin: 50px 0;
@@ -108,24 +107,29 @@
     position: absolute;
     bottom: 0;
     left: 5%;
-    width: 64px;   /* frame width */
-    height: 64px;  /* frame height */
+    width: 128px;   /* bigger frame width */
+    height: 128px;  /* bigger frame height */
     background-image: url('./assets/sprite_sheet.png');
     background-repeat: no-repeat;
-    background-size: 400% 400%; /* 4 columns × 4 rows */
-    background-position: 0 0;   /* start at top-left frame */
+    background-size: 400% 400%; /* 4 columns x 4 rows */
+    background-position: 0 0;   /* start at top-left of top row */
     image-rendering: pixelated;
     z-index: 2;
+    transform: scaleX(1); /* default facing right */
+    transform-origin: center;
   }
 
-  /* walking animation (top row) */
+  /* walk animation for top two rows (right walk) */
   .walking {
-    animation: walkCycle 0.6s steps(4) infinite; /* 4 frames horizontally */
+    animation: walkCycle 0.6s steps(4) infinite;
   }
 
   @keyframes walkCycle {
-    from { background-position: 0 0; }
-    to   { background-position: 100% 0; }
+    0%   { background-position: 0 0; }       /* first frame, top row */
+    25%  { background-position: 25% 0; }    /* second frame */
+    50%  { background-position: 50% 0; }    /* third frame */
+    75%  { background-position: 75% 0; }    /* fourth frame */
+    100% { background-position: 0 50%; }    /* second row starts, loops top 2 rows */
   }
 </style>
 
@@ -136,9 +140,14 @@ document.addEventListener("DOMContentLoaded", function() {
   let keys = { left: false, right: false };
 
   function updatePosition() {
-    // move slowly
-    if (keys.right) pos = Math.min(pos + 0.3, 95); // adjust speed
-    if (keys.left)  pos = Math.max(pos - 0.3, 0);
+    if (keys.right) {
+      pos = Math.min(pos + 0.3, 95); // slower movement
+      walker.style.transform = 'scaleX(1)'; // face right
+    }
+    if (keys.left) {
+      pos = Math.max(pos - 0.3, 0);
+      walker.style.transform = 'scaleX(-1)'; // flip horizontally
+    }
     walker.style.left = pos + "%";
 
     requestAnimationFrame(updatePosition);
