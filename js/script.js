@@ -9,8 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
     btn.addEventListener("click", () => {
       const text = btn.previousElementSibling;
       text.classList.toggle("expanded");
-      btn.textContent = text.classList.contains("expanded") ? "Read less" : "Read more";
+      btn.textContent = text.classList.contains("expanded")
+        ? "Read less"
+        : "Read more";
     });
   });
 });
+
 
