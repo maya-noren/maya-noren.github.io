@@ -75,8 +75,7 @@
       </div>
 
       <!-- SKILLS SECTION -->
-      <!-- WALK SECTION -->
-<section id="walk-section">
+      <section id="walk-section">
   <div id="walk-area">
     <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
     <div id="walker"></div>
@@ -91,6 +90,7 @@
     overflow: hidden;
     image-rendering: pixelated;
     margin: 50px 0;
+    border: none;
   }
 
   #walk-bg {
@@ -107,64 +107,91 @@
     position: absolute;
     bottom: 0;
     left: 5%;
-    width: 128px;   /* bigger frame width */
-    height: 128px;  /* bigger frame height */
     background-image: url('./assets/sprite_sheet.png');
     background-repeat: no-repeat;
-    background-size: 400% 400%; /* 4 columns x 4 rows */
-    background-position: 0 0;   /* start at top-left of top row */
+    background-position: 0 0;
     image-rendering: pixelated;
     z-index: 2;
-    transform: scaleX(1); /* default facing right */
     transform-origin: center;
-  }
-
-  /* walk animation for top two rows (right walk) */
-  .walking {
-    animation: walkCycle 0.6s steps(4) infinite;
-  }
-
-  @keyframes walkCycle {
-    0%   { background-position: 0 0; }       /* first frame, top row */
-    25%  { background-position: 25% 0; }    /* second frame */
-    50%  { background-position: 50% 0; }    /* third frame */
-    75%  { background-position: 75% 0; }    /* fourth frame */
-    100% { background-position: 0 50%; }    /* second row starts, loops top 2 rows */
   }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const walker = document.getElementById("walker");
-  let pos = 5;               // horizontal %
-  let keys = { left: false, right: false };
+  if (!walker) return;
 
-  function updatePosition() {
-    if (keys.right) {
-      pos = Math.min(pos + 0.3, 95); // slower movement
-      walker.style.transform = 'scaleX(1)'; // face right
+  const sprite = new Image();
+  sprite.src = './assets/sprite_sheet.png';
+
+  sprite.onload = function() {
+    const rows = 4;
+    const cols = 4;           // columns per row
+    const walkCycleRows = 2;  // top 2 rows = 8 frames
+    const totalFrames = cols * walkCycleRows; // 8 frames
+    const frameWidth = sprite.width / cols;
+    const frameHeight = sprite.height / rows;
+
+    // --- scale to fit section height ---
+    const desiredHeight = 128; 
+    const scale = desiredHeight / (frameHeight * walkCycleRows);
+    walker.style.width = frameWidth * scale + "px";
+    walker.style.height = frameHeight * walkCycleRows * scale + "px";
+    walker.style.backgroundSize = sprite.width * scale + "px " + sprite.height * scale + "px";
+
+    let pos = 5;        // horizontal %
+    let frame = 0;      // current frame index
+    let direction = 1;  // 1 = right, -1 = left
+    let keys = { left: false, right: false };
+    let lastFrameTime = 0;
+    const frameInterval = 150; // ms per frame (~6-7 FPS)
+
+    function update(timestamp) {
+      // --- move walker ---
+      if (keys.right) {
+        pos = Math.min(pos + 0.4, 95);
+        direction = 1;
+      }
+      if (keys.left) {
+        pos = Math.max(pos - 0.4, 0);
+        direction = -1;
+      }
+      walker.style.left = pos + "%";
+      walker.style.transform = `scaleX(${direction})`;
+
+      // --- update frame at fixed interval ---
+      if (keys.left || keys.right) {
+        if (!lastFrameTime) lastFrameTime = timestamp;
+        if (timestamp - lastFrameTime > frameInterval) {
+          frame = (frame + 1) % totalFrames; // loop through 8 frames
+          lastFrameTime = timestamp;
+        }
+      } else {
+        frame = 0; // idle
+      }
+
+      // --- calculate background position ---
+      const row = Math.floor(frame / cols);    // 0 or 1 (top 2 rows)
+      const col = frame % cols;
+      const bgX = -col * frameWidth * scale;
+      const bgY = -row * frameHeight * scale;
+      walker.style.backgroundPosition = `${bgX}px ${bgY}px`;
+
+      requestAnimationFrame(update);
     }
-    if (keys.left) {
-      pos = Math.max(pos - 0.3, 0);
-      walker.style.transform = 'scaleX(-1)'; // flip horizontally
-    }
-    walker.style.left = pos + "%";
 
-    requestAnimationFrame(updatePosition);
-  }
+    requestAnimationFrame(update);
 
-  requestAnimationFrame(updatePosition);
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "ArrowRight") keys.right = true, walker.classList.add("walking");
-    if (e.key === "ArrowLeft")  keys.left  = true, walker.classList.add("walking");
-  });
-
-  document.addEventListener("keyup", e => {
-    if (e.key === "ArrowRight") keys.right = false;
-    if (e.key === "ArrowLeft")  keys.left  = false;
-    if (!keys.right && !keys.left) walker.classList.remove("walking");
-  });
+    // --- keyboard events ---
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") keys.right = true;
+      if (e.key === "ArrowLeft") keys.left = true;
+    });
+    document.addEventListener("keyup", e => {
+      if (e.key === "ArrowRight") keys.right = false;
+      if (e.key === "ArrowLeft") keys.left = false;
+    });
+  };
 });
 </script>
 
