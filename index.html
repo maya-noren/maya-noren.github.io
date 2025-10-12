@@ -370,39 +370,31 @@
     }
   }
 
-  function catBlink(image, interval = 6200, initialDelay = 3000) {
+  function catBlink(image, baseInterval = 6000, initialDelay = 3000) {
     setTimeout(() => {
       doCatBlink();
-      setInterval(doCatBlink, interval);
     }, initialDelay);
 
     function doCatBlink() {
-      // Randomly choose between a single or double blink
-      const isDoubleBlink = Math.random() < 0.4; // 40% chance of double blink
-
-      // First blink
+      // Show the blink
       image.style.opacity = "1";
+
+      // Linger longer on the blink
       setTimeout(() => {
         image.style.opacity = "0";
-      }, 200); // stays closed slightly longer
+      }, 300); // 300ms closed
 
-      if (isDoubleBlink) {
-        // Second blink a short moment later
-        setTimeout(() => {
-          image.style.opacity = "1";
-          setTimeout(() => {
-            image.style.opacity = "0";
-          }, 180);
-        }, 400); // pause between blinks
-      }
+      // Schedule the next blink with a little randomness
+      const nextBlink = baseInterval + (Math.random() * 2000 - 1000); // ±1s variation
+      setTimeout(doCatBlink, nextBlink);
     }
   }
 
   // Normal blink (for the human character)
   blink(blinkImg, 120, 4000, 2000);
 
-  // Cat blink (more expressive and varied)
-  catBlink(catBlinkImg, 6200, 3000);
+  // Cat blink (single, lingering, randomized intervals)
+  catBlink(catBlinkImg, 6000, 3000);
 </script>
 
 
