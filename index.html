@@ -77,18 +77,21 @@
       <!-- SKILLS SECTION -->
       <section id="walk-section">
         <span class="subheader-text">Skills</span>
+        <div class="image-caption">Move: &lt;- -&gt;</div>
 
         <div id="walk-area">
           <img id="walk-bg" src="./assets/walk_bg.png" alt="background">
 
           <!-- Pixel labels -->
+          <div class="walk-label" data-label="C++">C++</div>
+          <div class="walk-label" data-label="C">C</div>
+          <div class="walk-label" data-label="Python">Python</div>
           <div class="walk-label" data-label="HTML">HTML</div>
+          <div class="walk-label" data-label="Javascript">Javascript</div>
           <div class="walk-label" data-label="CSS">CSS</div>
-          <div class="walk-label" data-label="JavaScript">JavaScript</div>
 
           <div id="walker"></div>
         </div>
-         <div class="image-caption">Move: &lt;ArrowLeft&gt;- -&lt;ArrowRight&gt;</div>
       </section>
 
       <!-- Pixel font -->
@@ -105,11 +108,6 @@
           image-rendering: pixelated;
           margin: 50px auto;
           border: none;
-        }
-
-        .image-caption {
-          display: block;
-          margin: 5px auto 0 auto;
         }
 
         #walk-bg {
@@ -152,9 +150,12 @@
           background-color: black;
         }
 
-        .walk-label:nth-of-type(1) { left: 200px; bottom: 110px; }
-        .walk-label:nth-of-type(2) { left: 400px; bottom: 110px; } 
-        .walk-label:nth-of-type(3) { left: 600px; bottom: 110px; }
+        .walk-label:nth-of-type(1) { left: 100px; bottom: 120px; }
+        .walk-label:nth-of-type(2) { left: 200px; bottom: 120px; } 
+        .walk-label:nth-of-type(3) { left: 300px; bottom: 120px; }
+        .walk-label:nth-of-type(4) { left: 400px; bottom: 120px; }
+        .walk-label:nth-of-type(5) { left: 500px; bottom: 120px; } 
+        .walk-label:nth-of-type(6) { left: 600px; bottom: 120px; }
       </style>
 
       <script>
