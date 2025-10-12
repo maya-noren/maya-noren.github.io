@@ -149,15 +149,14 @@ body {
 
 .project-card-text {
   overflow: hidden;
-  max-height: 4.5em; /* enough for ~3 lines with your current font */
-  transition: max-height 0.35s ease;
+  max-height: 4.8em; /* ~3 lines (1.6em * 3) */
+  line-height: 1.2;  /* adjust to your font’s actual line height */
+  transition: max-height 0.4s ease;
 }
 
-/* When expanded, remove limit completely */
 .project-card-text.expanded {
-  max-height: none; /* expands fully */
+  max-height: none; /* large enough for full content */
 }
-
 
 .read-more-btn {
   padding: 8px 16px;
