@@ -1,0 +1,20 @@
+.bibliography {
+  padding-left: 20px; /* space for bullets */
+  list-style-type: disc; /* standard bullet */
+}
+
+.bibliography li {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.bibliography em {
+  font-style: italic;
+}
+
+.bibliography a {
+  color: inherit;
+  text-decoration: underline;
+}
