@@ -74,7 +74,7 @@ p {
   margin-bottom: 1.5rem;
 }
 
-.main-right-text .footer-text {
+.main-right .footer-text {
     font-size: 0.9rem;
     color: #666;
 }
@@ -98,18 +98,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.main-right-image {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.main-right-text p {
-  font-size: 16px;
-  line-height: 1.7;
 }
 
 /* ====== BULLET POINTS ====== */
