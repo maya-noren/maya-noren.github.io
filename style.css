@@ -137,11 +137,11 @@ ul li {
   align-items: center;
   text-align: center;
   flex: 1 1 150px;             /* flexible width, min 150px */
-  max-width: 200px;            /* optional max width */
+  max-width: 250px;            /* optional max width */
 }
 
 .recent-reads img {
-  height: 300px;               /* uniform height */
+  height: 400px;               /* uniform height */
   width: auto;                 /* keep original aspect ratio */
   max-width: 100%;             /* prevent overflow */
 }
