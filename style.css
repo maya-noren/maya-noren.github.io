@@ -74,6 +74,10 @@ p {
   margin-bottom: 1.5rem;
 }
 
+.footer-text {
+    font-size: 0.85rem;
+    color: #666;     
+}
 
 /* ====== HOME PAGE ====== */
 .main-page {
