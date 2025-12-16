@@ -88,16 +88,15 @@ p {
 }
 
 .main-left {
-  width: 40%;
+  width: 38%;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .main-right {
-  width: 60%;
+  width: 58%;
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
 }
 
 .main-right h2 {
