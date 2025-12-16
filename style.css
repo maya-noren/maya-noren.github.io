@@ -125,11 +125,10 @@ ul li {
 /* ====== RECENT READS ====== */
 .recent-reads {
   display: flex;
-  gap: 20px;             /* space between books */
-  justify-content: center; /* center the row */
-  flex-wrap: nowrap;      /* keep on same line */
-  margin: 2rem 0;         /* space above and below section */
-  overflow-x: auto;       /* allow horizontal scroll if screen is narrow */
+  gap: 20px;                   /* space between books */
+  justify-content: space-between; /* spread across full width */
+  flex-wrap: wrap;              /* wrap to next line on small screens */
+  margin: 2rem 0;
 }
 
 .recent-reads .book {
@@ -137,23 +136,22 @@ ul li {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 0 0 auto;        /* prevent shrinking */
-  width: 175px;           /* fixed width to match captions nicely */
+  flex: 1 1 150px;             /* flexible width, min 150px */
+  max-width: 200px;            /* optional max width */
 }
 
 .recent-reads img {
-  height: 300px;          /* same height for all images */
-  width: 100%;            /* scale width proportionally */
-  object-fit: cover;      /* crop if needed to fit */
+  height: 300px;               /* uniform height */
+  width: auto;                 /* keep original aspect ratio */
+  max-width: 100%;             /* prevent overflow */
 }
 
 .recent-reads .caption {
   margin-top: 8px;
   font-size: 0.95rem;
   color: #111;
-  word-wrap: break-word;  /* allow wrapping if caption is long */
+  word-wrap: break-word;
 }
-
 
 /* ====== BLOG PAGE ====== */
 .post-list {
