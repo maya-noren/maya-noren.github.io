@@ -82,7 +82,7 @@ p {
 /* ====== HOME PAGE ====== */
 .main-page {
   display: flex;
-  gap: 60px;
+  gap: 40px;
   align-items: stretch; /* left image matches right height */
   margin-top: 40px;
 }
@@ -97,7 +97,7 @@ p {
   width: 60%;
   display: flex;
   flex-direction: column;
-  /* remove gap */
+  padding-left: 20px;
 }
 
 .main-right h2 {
