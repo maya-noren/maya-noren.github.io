@@ -108,6 +108,34 @@ p {
   line-height: 1.7;
 }
 
+/* ====== RECENT READS ====== */
+.recent-reads {
+  display: flex;
+  gap: 20px;            /* space between books */
+  justify-content: center; /* center the row */
+  flex-wrap: wrap;       /* wraps to next line on smaller screens */
+  margin: 2rem 0;        /* space above and below section */
+}
+
+.recent-reads .book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.recent-reads img {
+  height: 200px;    
+  width: auto;      
+}
+
+.recent-reads .caption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #111;
+}
+
+
 /* ====== BLOG PAGE ====== */
 .post-list {
   display: flex;
