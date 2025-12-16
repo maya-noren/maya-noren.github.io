@@ -82,7 +82,7 @@ p {
 /* ====== HOME PAGE ====== */
 .main-page {
   display: flex;
-  gap: 40px;
+  gap: 60px;
   align-items: stretch; /* left image matches right height */
   margin-top: 40px;
 }
