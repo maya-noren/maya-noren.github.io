@@ -22,19 +22,28 @@ a {
   transition: opacity 0.3s ease;
 }
 
+.page-content {
+  margin-top: 8%;
+}
+
 /* ====== NAVBAR ====== */
 nav {
   display: flex;
   justify-content: center;
-  align-items: center; /* vertical alignment fix */
+  align-items: center;
   gap: 30px;
+  margin-top: 40px;
   margin-bottom: 40px;
   font-weight: 500;
 }
 
-nav a:hover {
-  opacity: 0.6; /* fade effect */
-  text-decoration: none; /* remove underline */
+nav a.active {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover:not(.active) {
+  text-decoration: underline;
 }
 
 /* ====== HEADINGS ====== */
@@ -58,17 +67,13 @@ h3 {
 
 /* ====== PARAGRAPHS ====== */
 p {
-  margin-bottom: 15px;
   text-align: left;
   font-size: 16px;
   line-height: 1.7;
   color: #111;
+  margin-bottom: 1.5rem;
 }
 
-p br {
-  display: block;
-  margin-bottom: 1em; /* full line spacing */
-}
 
 /* ====== HOME PAGE ====== */
 .main-page {
@@ -107,14 +112,11 @@ p br {
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin: 0 auto; /* center container */
-  max-width: 700px; /* container width */
 }
 
-.post {
-  padding-bottom: 15px;
-  transition: opacity 0.2s ease;
+.post-list .post:first-child h2,
+.post-list .post:first-child h3 {
+  margin-top: 0;
 }
 
 .post:hover {
@@ -123,22 +125,20 @@ p br {
 
 .post-title {
   font-size: 1.3rem;
-  margin-bottom: 5px;
-  max-width: 500px; /* thinner post text */
+  margin-bottom: 4px;
 }
 
 .post-date {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #666;
-  margin-bottom: 8px;
-  max-width: 500px;
+  margin-bottom: 6px;
 }
 
 .post-desc {
   font-size: 1rem;
   color: #333;
-  max-width: 500px;
 }
+
 
 /* ====== BLOG POST PAGES ====== */
 .post-subheader {
@@ -169,10 +169,27 @@ p br {
   text-decoration: underline;
 }
 
+/* ====== LINE DIVIDER ====== */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2rem 0;
+}
+
 /* ====== BACK TO BLOG LINK ====== */
-a[href$="blog.html"] {
-  display: inline-block;
-  margin-top: 20px;
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.back-link .text {
+  text-decoration: none;
+}
+
+.back-link:hover .text {
+  text-decoration: underline;
 }
 
 /* ====== RESPONSIVE ====== */
